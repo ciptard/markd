@@ -32,4 +32,4 @@ require_once('./libraries/markdown/markdown.php');
 require_once('./classes/Post.php');
 require_once('./classes/Posts.php');
 
-$posts = new Posts();
+$msw = new Markd();
