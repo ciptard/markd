@@ -15,7 +15,7 @@ class Posts {
 	}
 	
 	private function process_posts() {
-		$this->post_listing = list_directory(POSTS_PATH, POSTS_PER_PAGE, 0);
+		$this->post_listing = Helpers::list_directory(POSTS_PATH, POSTS_PER_PAGE, 0);
 		$this->parse_posts();
 		$this->write_front_page();
 		$this->complete_process();
@@ -54,7 +54,7 @@ class Posts {
 				}
 			}
 		}
-		$this->posts = sort_multidimensional('date', $this->posts, POSTS_SORT_ORDER);
+		$this->posts = Helpers::sort_multidimensional('date', $this->posts, POSTS_SORT_ORDER);
 	}
 	
 	public function write_front_page() {
