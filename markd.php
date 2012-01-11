@@ -28,7 +28,7 @@ See the file GPLv3.txt for these warranty details and distribution conditions.";
 require_once('./config.php');
 require_once('./helpers.php');
 require_once('./libraries/markdown/markdown.php');
-
+require_once('./classes/Markd.php');
 require_once('./classes/Post.php');
 require_once('./classes/Posts.php');
 
