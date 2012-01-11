@@ -24,36 +24,17 @@ class Posts {
 	public function parse_posts() {
 		if (!empty($this->post_listing)) {
 			foreach ($this->post_listing as $k=>$post_file) {
-				$handle = fopen($post_file, "r");
-				$contents = fread($handle, filesize($post_file));
-				fclose($handle);
-				$content_start = strpos($contents, '---', 4);
-				$raw_headings = trim(substr($contents, 3, ($content_start - 3)));
-				$raw_headings = explode("\n", $raw_headings);
-
-				foreach ($raw_headings as $raw_heading) {
-					if ($raw_heading != '') {
-						$temp = explode(':', $raw_heading);
-						if ($temp[0] == 'Date') { $temp[1] = strtotime($temp[1]); }
-						$heading[$temp[0]] = $temp[1];
-					}
-				}
-				// TODO - Move this into the Post class, was silly of me to put it here [mwalters :: 2012-01-10] 
-				$this->posts[] = (object) array(
-					'title'        => $heading['Title'],
-					'date'         => $heading['Date'],
-					'published'    => $heading['Published'],
-					'filename'     => $post_file,
-					'raw_content'  => substr($contents, ($content_start + 4), strlen($contents)),
-					'html_content' => Markdown(substr($contents, ($content_start + 4), strlen($contents)))
-				);
-				if ($heading['Published'] == 'true') {
-					$this->published_posts++;
-				} else {
+				unset($post);
+				$post = new Post($post_file);
+				if ($post->published == 'false') {
 					$this->unpublished_posts++;
+				} else {
+					$this->published_posts++;
 				}
+				$this->posts[] = $post;
 			}
 		}
+		
 		$this->posts = Helpers::sort_multidimensional('date', $this->posts, POSTS_SORT_ORDER);
 	}
 	
