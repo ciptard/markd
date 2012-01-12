@@ -36,10 +36,11 @@ class Post {
 			}
 		}
 
-		$this->title         = $heading['Title'];
-		$this->date          = $heading['Date'];
-		$this->published     = $heading['Published'];
-		$this->raw_content   = substr($this->raw_contents, ($content_start + 4), strlen($this->raw_contents));
-		$this->html_content  = Markdown(substr($this->raw_contents, ($content_start + 4), strlen($this->raw_contents)));
+		$this->title         = trim($heading['Title']);
+		$this->date          = trim($heading['Date']);
+		$this->published     = trim($heading['Published']);
+		$this->raw_content   = trim(substr($this->raw_contents, ($content_start + 4), strlen($this->raw_contents)));
+		if (Helpers::feature_enabled('MARKD_DEBUG')) { $this->raw_contents  .= "\n\n" . $this->post_file; }
+		$this->html_content  = trim(Markdown(substr($this->raw_contents, ($content_start + 4), strlen($this->raw_contents))));
 	}
 }

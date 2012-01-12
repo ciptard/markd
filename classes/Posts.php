@@ -47,7 +47,9 @@ class Posts {
 				} else {
 					$this->published_posts++;
 				}
-				$this->posts[] = $post;
+				if ($post->published != 'false') {
+					$this->posts[] = $post;
+				}
 			}
 		}
 		$this->posts = Helpers::sort_multidimensional('date', $this->posts, POSTS_SORT_ORDER);
