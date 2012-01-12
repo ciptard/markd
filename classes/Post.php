@@ -3,13 +3,13 @@
 * Post Class
 */
 class Post {
-	var $post_file;
-	var $raw_contents;
-	var $title;
-	var $date;
-	var $published;
-	var $raw_content;
-	var $html_content;
+	public $post_file;
+	public $raw_contents;
+	public $title;
+	public $date;
+	public $published;
+	public $raw_content;
+	public $html_content;
 
 	function __construct($post_file) {		
 		$this->post_file = $post_file;
