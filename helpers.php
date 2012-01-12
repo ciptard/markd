@@ -68,4 +68,17 @@ class Helpers {
 
 		return $toSorts;
 	}
+	
+	/**
+	 * Figure out if a feature is enabled in the configuration file
+	 * The constant needs to both be defined and set to true in order to be enabled
+	 * 
+	 * @param   string the feature to be checked
+	 * @return	bool True if the feature is both defined and set to true, False if it is not defined or not set to true
+	 **/
+	public static function feature_enabled($feature) {	
+		if (defined($feature) && constant($feature) === true) { return true; }
+
+		return false;
+	}
 }
