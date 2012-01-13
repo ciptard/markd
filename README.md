@@ -1,6 +1,6 @@
 # Foreword
 
-Please keep in mind that right now this project is still extremely alpha and nowhere feature complete.  In its current state it wouldn't even be worth running on a site right now.  Anyhow, feel free to contribute or do your own thing with it :)
+Please keep in mind that right now this project is still extremely alpha and nowhere near feature complete.  In its current state it wouldn't even be worth running on a site right now.  Anyhow, feel free to contribute or do your own thing with it :)
 
 ---
 
