@@ -39,7 +39,7 @@ i.e. Version 2 is no bigger or more important than v1.9 or 1.2.  Patches/misc wi
 # Contributing
 On the [Issues page](https://github.com/mwalters/markd/issues), there are issues marked as "[blessed](https://github.com/mwalters/markd/issues?labels=blessed&sort=created&direction=desc&state=open&page=1)". These issues indicate items that are in-line with the core teams vision for the product. Assuming they receive a good change set, it will get committed to the project.
 
-This does not mean that items missing the "blessed" tag will not be committed if someone does the work, and forks of the project are welcome and encouraged (why else would this be on github after all?). It is possible that with good work put towards any feature that it will be incorporated to the core product. However, if your intention is to get something committed to the core marks product, you might want to check with a core dev before doing the work.
+This does not mean that items missing the "blessed" tag will not be committed if someone does the work, and forks of the project are welcome and encouraged (why else would this be on github after all?). It is possible that with good work put towards any feature that it will be incorporated to the core product. However, if your intention is to get something committed to the core markd product, you might want to check with a core dev before doing the work.
 
 ---
 
