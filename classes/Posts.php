@@ -57,6 +57,10 @@ class Posts {
 	
 	public function write_front_page() {		// Write out Front Page
 		$fp = fopen(PUBLISHED_PATH . '/index.html', 'w');
+
+		$header = Helpers::locate_template('header');
+		fwrite($fp, $header);
+		
 		if (!empty($this->posts)) {
 			foreach($this->posts as $post) {
 				$fp = fopen(PUBLISHED_PATH . '/index.html', 'a');
@@ -64,10 +68,18 @@ class Posts {
 				fclose($fp);
 			}
 		}
+
+		$fp = fopen(PUBLISHED_PATH . '/index.html', 'a');		
+		$footer = Helpers::locate_template('footer');
+		fwrite($fp, $footer);
 	}
 	
 	public function write_archive_page() {		// Write out archive page
 		$fp = fopen(PUBLISHED_PATH . '/archive-' . $this->current_page . '.html', 'w');
+
+		$header = Helpers::locate_template('header');
+		fwrite($fp, $header);
+
 		if (!empty($this->posts)) {
 			foreach($this->posts as $post) {
 				$fp = fopen(PUBLISHED_PATH . '/archive-' . $this->current_page . '.html', 'a');
@@ -75,6 +87,10 @@ class Posts {
 				fclose($fp);
 			}
 		}
+		
+		$fp = fopen(PUBLISHED_PATH . '/archive-' . $this->current_page . '.html', 'a');	
+		$footer = Helpers::locate_template('footer');
+		fwrite($fp, $footer);
 	}
 	
 	private function complete_process() {		// Display statistics
