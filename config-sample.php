@@ -7,3 +7,5 @@ define('PLUGINS_PATH', '/path/to/plugins');
 define('POSTS_PER_PAGE', 10);
 define('POSTS_SORT_ORDER', 'DESC');
 define('MARKD_DEBUG', FALSE);
+
+define('ACTIVE_THEME', '/folder_name_of_active_theme');
