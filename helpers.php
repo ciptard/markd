@@ -8,16 +8,18 @@
  * @param mixed Any string, object, or array to be displayed to be printed out
  * @return null
  **/
-function _debug($data) {
-	echo '<div style="border: 1px solid #f00; padding: 5px; margin: 2px;">';
+function _debug($data, $withHtml = FALSE) {
+	if (!withHtml) { echo "\n\n"; }
+	if ($withHtml) { echo '<div style="border: 1px solid #f00; padding: 5px; margin: 2px;">'; }
 	if (is_array($data) OR is_object($data)) {
-		echo '<pre>';
+		if ($withHtml) { echo '<pre>'; }
 		print_r($data);
-		echo '</pre>';
+		if ($withHtml) { echo '</pre>'; }
 	} elseif (is_string($data)) {
 		echo $data;
 	}
-	echo '</div>';
+	if ($withHtml) { echo '</div>'; }
+	if (!withHtml) { echo "\n\n"; }
 	return null;
 }
 
