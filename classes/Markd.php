@@ -23,7 +23,7 @@ class Markd {
 			$lastPublished = $get_posts['lastPublished'];
 			$blogPosts = $get_posts['blogPosts'];
 
-			$this->write_file($this->currentPage, $blogPosts);
+			$this->write_post_list($this->currentPage, $blogPosts);
 			if (count($blogPosts) < POSTS_PER_PAGE) { $currently_processing = FALSE; }		// Keep loop going until we reach a full page of posts
 			$this->currentPage++;
 		}
@@ -40,7 +40,7 @@ class Markd {
 	
 	public function get_pages() { } // Stub
 	
-	public function write_file($pageNumber, $contentList) {
+	public function write_post_list($pageNumber, $contentList) {
 		if (count($contentList) < 1) { return FALSE; }
 		
 		if ($pageNumber == 0) {
@@ -49,36 +49,31 @@ class Markd {
 			$file = PUBLISHED_PATH . '/archive-' . $pageNumber . '.html';
 		}
 		
-		$fp = fopen($file, 'w');
-
-		$header = Helpers::locate_template('header');
-		fwrite($fp, $header);
+		$writeContent = Helpers::locate_template('header');
 		
 		if (!empty($contentList)) {
 			foreach($contentList as $content) {
-				fwrite($fp, $content->html_content);
+				$writeContent .= $content->html_content;
 				$this->write_single_post($content);
 			}
 		}
 
-		$footer = Helpers::locate_template('footer');
-		fwrite($fp, $footer);
-		fclose($fp);
-		
-		$this->filesWritten++;
+		$writeContent .= Helpers::locate_template('footer');
+
+		$test = Helpers::write_file($file, $writeContent, 'w');
+		if ($test) { $this->filesWritten++; }
 	}
 	
 	public function write_single_post($content) {
 		$file = Helpers::sanitize_slug($content->title);
 		$file = PUBLISHED_PATH . '/' . $file . '.html';
 		
-		$fp = fopen($file, 'w');
-		$header = Helpers::locate_template('header');
-		fwrite($fp, $header);
-		fwrite($fp, $content->html_content);
-		$footer = Helpers::locate_template('footer');
-		fwrite($fp, $footer);
-		fclose($fp);
+		$writeContent = Helpers::locate_template('header');
+		$writeContent .= $content->html_content;
+		$writeContent .= Helpers::locate_template('footer');
+		
+		$test = Helpers::write_file($file, $writeContent, 'w');
+		if ($test) { $this->filesWritten++; }
 	}
 	
 	private function complete_process() {

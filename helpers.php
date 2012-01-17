@@ -105,6 +105,16 @@ class Helpers {
 		return $templateContents;
 	}
 	
+	public static function write_file($file = '', $content = '', $mode = 'w') {
+		if ($file == '') { return FALSE; }
+
+		$fp = fopen($file, $mode);
+		fwrite($fp, $content);
+		fclose($fp);
+		
+		return TRUE;
+	}
+	
 	public static function sanitize_slug($toFilterString) {
 		$filteredString = $toFilterString;
 		$filteredString = str_replace(' ', '-', $filteredString);
