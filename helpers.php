@@ -104,4 +104,10 @@ class Helpers {
 		
 		return $templateContents;
 	}
+	
+	public static function sanitize_slug($toFilterString) {
+		$filteredString = $toFilterString;
+		$filteredString = str_replace(' ', '-', $filteredString);
+		return $filteredString;
+	}
 }

@@ -57,6 +57,7 @@ class Markd {
 		if (!empty($contentList)) {
 			foreach($contentList as $content) {
 				fwrite($fp, $content->html_content);
+				$this->write_single_post($content);
 			}
 		}
 
@@ -65,6 +66,19 @@ class Markd {
 		fclose($fp);
 		
 		$this->filesWritten++;
+	}
+	
+	public function write_single_post($content) {
+		$file = Helpers::sanitize_slug($content->title);
+		$file = PUBLISHED_PATH . '/' . $file . '.html';
+		
+		$fp = fopen($file, 'w');
+		$header = Helpers::locate_template('header');
+		fwrite($fp, $header);
+		fwrite($fp, $content->html_content);
+		$footer = Helpers::locate_template('footer');
+		fwrite($fp, $footer);
+		fclose($fp);
 	}
 	
 	private function complete_process() {
