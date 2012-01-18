@@ -80,6 +80,6 @@ class Feed {
 			</rss>';
 		
 		$file = PUBLISHED_PATH . '/rss.xml';
-		$test = Helpers::write_file($file, $feedOutput, 'w');
+		$test = Filesystem::write_file($file, $feedOutput, 'w');
 	}
 }

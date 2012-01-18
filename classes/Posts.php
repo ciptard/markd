@@ -18,7 +18,7 @@ class Posts {
 		$lastPublished = $startPostNum;
 
 		do {
-			$postListing = Helpers::list_directory(POSTS_PATH, $numberOfPosts, $lastPublished);
+			$postListing = Filesystem::list_directory(POSTS_PATH, $numberOfPosts, $lastPublished);
 
 			if (!empty($postListing)) {
 				foreach ($postListing as $postFile) {

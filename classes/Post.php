@@ -18,9 +18,7 @@ class Post {
 	}
 
 	function load_post() {
-		$handle = fopen($this->post_file, "r");
-		$this->raw_contents = fread($handle, filesize($this->post_file));
-		fclose($handle);
+		$this->raw_contents = Filesystem::read_file($this->post_file);
 	}
 
 	function parse_post() {

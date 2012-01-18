@@ -3,20 +3,24 @@
 * Theme Class
 */
 class Theme {
-	public static function locate_template($templateName) {
+	public static function locate_template($templateName, $context = '') {
 		switch($templateName) {
 			case 'header':
-				$file = THEMES_PATH . ACTIVE_THEME . '/header.tpl';
-				$handle = fopen($file, "r");
-				$templateContents = fread($handle, filesize($file));
-				fclose($handle);
+				if ($context === '') {
+					$file = THEMES_PATH . ACTIVE_THEME . '/header.tpl';
+					$templateContents = Filesystem::read_file($file);
+				}
 				break;
 			case 'footer':
-				$file = THEMES_PATH . ACTIVE_THEME . '/footer.tpl';
-				$handle = fopen($file, "r");
-				$templateContents = fread($handle, filesize($file));
-				fclose($handle);
+				if ($context === '') {
+					$file = THEMES_PATH . ACTIVE_THEME . '/footer.tpl';
+					$templateContents = Filesystem::read_file($file);
+				}
 				break;
+			case 'post-content':
+				
+				break;
+			case 'page-content':
 			default:
 				break;
 		}

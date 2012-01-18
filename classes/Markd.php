@@ -20,6 +20,7 @@ class Markd {
 		while ($currently_processing) {
 			$blogPosts = array();
 			$get_posts = $this->get_posts($lastPublished, POSTS_PER_PAGE);
+
 			$lastPublished = $get_posts['lastPublished'];
 			$blogPosts = $get_posts['blogPosts'];
 
@@ -33,15 +34,17 @@ class Markd {
 				$feed->set_selfLink(SITE_URL . '/feed.rss');
 				$feed->set_siteLink(SITE_URL);
 				if (SITE_DESC !== '') { $feed->set_description(SITE_DESC); }
-				foreach ($blogPosts as $blogPost) {
-					unset($item);
-					$item = (object) array(
-						'title'        => $blogPost->title,
-						'link'         => SITE_URL . '/' . Helpers::sanitize_slug($blogPost->title) . '.html',
-						'pubDate'      => date('D, j M Y H:i:s +0000', $blogPost->date),
-						'html_content' => $blogPost->html_content
-					);
-					$feed->add_item($item);
+				if (!empty($blogPosts)) {
+					foreach ($blogPosts as $blogPost) {
+						unset($item);
+						$item = (object) array(
+							'title'        => $blogPost->title,
+							'link'         => SITE_URL . '/' . Helpers::sanitize_slug($blogPost->title) . '.html',
+							'pubDate'      => date('D, j M Y H:i:s +0000', $blogPost->date),
+							'html_content' => $blogPost->html_content
+						);
+						$feed->add_item($item);
+					}
 				}
 				$feed->save();
 			}
@@ -81,7 +84,7 @@ class Markd {
 
 		$writeContent .= Theme::locate_template('footer');
 
-		$test = Helpers::write_file($file, $writeContent, 'w');
+		$test = Filesystem::write_file($file, $writeContent, 'w');
 		if ($test) { $this->filesWritten++; }
 	}
 	
@@ -93,7 +96,7 @@ class Markd {
 		$writeContent .= $content->html_content;
 		$writeContent .= Theme::locate_template('footer');
 		
-		$test = Helpers::write_file($file, $writeContent, 'w');
+		$test = Filesystem::write_file($file, $writeContent, 'w');
 		if ($test) { $this->filesWritten++; }
 	}
 	
