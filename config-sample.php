@@ -8,4 +8,8 @@ define('POSTS_PER_PAGE', 10);
 define('POSTS_SORT_ORDER', 'DESC');
 define('MARKD_DEBUG', FALSE);
 
+define('SITE_TITLE', '');
+define('SITE_URL', '');
+define('SITE_DESC', '');
+
 define('ACTIVE_THEME', '/default');

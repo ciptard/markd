@@ -25,6 +25,27 @@ class Markd {
 
 			$this->write_post_list($this->currentPage, $blogPosts);
 			if (count($blogPosts) < POSTS_PER_PAGE) { $currently_processing = FALSE; }		// Keep loop going until we reach a full page of posts
+			
+			if ($this->currentPage == 0) {
+				// Create Feed Object and save
+				$feed = new Feed();
+				$feed->set_title(SITE_TITLE);
+				$feed->set_selfLink(SITE_URL . '/feed.rss');
+				$feed->set_siteLink(SITE_URL);
+				if (SITE_DESC !== '') { $feed->set_description(SITE_DESC); }
+				foreach ($blogPosts as $blogPost) {
+					unset($item);
+					$item = (object) array(
+						'title'        => $blogPost->title,
+						'link'         => SITE_URL . '/' . Helpers::sanitize_slug($blogPost->title) . '.html',
+						'pubDate'      => date('D, j M Y H:i:s +0000', $blogPost->date),
+						'html_content' => $blogPost->html_content
+					);
+					$feed->add_item($item);
+				}
+				$feed->save();
+			}
+			
 			$this->currentPage++;
 		}
 		

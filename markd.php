@@ -31,5 +31,6 @@ require_once('./libraries/markdown/markdown.php');
 require_once('./classes/Markd.php');
 require_once('./classes/Post.php');
 require_once('./classes/Posts.php');
+require_once('./classes/Feed.php');
 
 $msw = new Markd();
