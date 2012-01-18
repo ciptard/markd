@@ -70,7 +70,7 @@ class Markd {
 			$file = PUBLISHED_PATH . '/archive-' . $pageNumber . '.html';
 		}
 		
-		$writeContent = Helpers::locate_template('header');
+		$writeContent = Theme::locate_template('header');
 		
 		if (!empty($contentList)) {
 			foreach($contentList as $content) {
@@ -79,7 +79,7 @@ class Markd {
 			}
 		}
 
-		$writeContent .= Helpers::locate_template('footer');
+		$writeContent .= Theme::locate_template('footer');
 
 		$test = Helpers::write_file($file, $writeContent, 'w');
 		if ($test) { $this->filesWritten++; }
@@ -89,9 +89,9 @@ class Markd {
 		$file = Helpers::sanitize_slug($content->title);
 		$file = PUBLISHED_PATH . '/' . $file . '.html';
 		
-		$writeContent = Helpers::locate_template('header');
+		$writeContent = Theme::locate_template('header');
 		$writeContent .= $content->html_content;
-		$writeContent .= Helpers::locate_template('footer');
+		$writeContent .= Theme::locate_template('footer');
 		
 		$test = Helpers::write_file($file, $writeContent, 'w');
 		if ($test) { $this->filesWritten++; }

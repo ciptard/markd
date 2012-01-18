@@ -84,27 +84,6 @@ class Helpers {
 		return false;
 	}
 	
-	public static function locate_template($templateName) {
-		switch($templateName) {
-			case 'header':
-				$file = THEMES_PATH . ACTIVE_THEME . '/header.tpl';
-				$handle = fopen($file, "r");
-				$templateContents = fread($handle, filesize($file));
-				fclose($handle);
-				break;
-			case 'footer':
-				$file = THEMES_PATH . ACTIVE_THEME . '/footer.tpl';
-				$handle = fopen($file, "r");
-				$templateContents = fread($handle, filesize($file));
-				fclose($handle);
-				break;
-			default:
-				break;
-		}
-		
-		return $templateContents;
-	}
-	
 	public static function write_file($file = '', $content = '', $mode = 'w') {
 		if ($file == '') { return FALSE; }
 
