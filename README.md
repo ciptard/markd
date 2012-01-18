@@ -1,10 +1,7 @@
-# Foreword
-
+# Overview
+### Current State
 Please keep in mind that right now this project is still extremely alpha and nowhere near feature complete.  In its current state it wouldn't even be worth running on a site right now.  Anyhow, feel free to contribute or do your own thing with it :)
 
----
-
-# Overview
 ### What It Does 
 The purpose of markd is to produce a static website and/or blog based off of a hierarchical structure of Markdown syntax files.
 
@@ -26,16 +23,6 @@ At least for the time being, there is no dynamic processing.  This means comment
 
 ---
 
-# Versioning
-
-Releases will be numbered with the following format:
-
-`<major>.<major>.<patch>`
-
-i.e. Version 2 is no bigger or more important than v1.9 or 1.2.  Patches/misc will be released with versions such as 1.2.1 to indicate it is a patch to 1.2.
-
----
-
 # Contributing
 On the [Issues page](https://github.com/mwalters/markd/issues), there are issues marked as "[blessed](https://github.com/mwalters/markd/issues?labels=blessed&sort=created&direction=desc&state=open&page=1)". These issues indicate items that are in-line with the core teams vision for the product. Assuming they receive a good change set, it will get committed to the project.
 
@@ -45,5 +32,7 @@ This does not mean that items missing the "blessed" tag will not be committed if
 
 # License & Copyright
 **markd Copyright (C) 2012  Matthew Walters**
+
+Please see GPLv3.txt for full license information.
 
 This program comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions. See the file GPLv3.txt for these warranty details and distribution conditions.
