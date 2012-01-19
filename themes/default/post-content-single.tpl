@@ -1,4 +1,4 @@
 <div class="post-wrap">
-	<h2 class="post-title"><a href="{{post_permalink}}">{{post_title}}</a></h2>
+	<h1 class="post-title">{{post_title}}</h1>
 	<div class="post-content">{{post_content}}</div>
 </div>

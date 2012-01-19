@@ -5,6 +5,7 @@
 class Post {
 	public $post_file;
 	public $raw_contents;
+	public $id;
 	public $title;
 	public $date;
 	public $published;
@@ -34,6 +35,7 @@ class Post {
 			}
 		}
 
+		$this->id            = '';
 		$this->title         = trim($heading['Title']);
 		$this->date          = trim($heading['Date']);
 		$this->published     = trim($heading['Published']);

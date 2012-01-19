@@ -69,15 +69,18 @@ class Markd {
 		
 		if ($pageNumber == 0) {
 			$file = PUBLISHED_PATH . '/index.html';
+			$context = 'posting-index';
 		} else {
 			$file = PUBLISHED_PATH . '/archive-' . $pageNumber . '.html';
+			$context = 'posting-archive';
 		}
 		
 		$writeContent = Theme::locate_template('header');
 		
 		if (!empty($contentList)) {
 			foreach($contentList as $content) {
-				$writeContent .= $content->html_content;
+//				$writeContent .= $content->html_content;
+				$writeContent .= Theme::locate_template('post-content', $context, $content);
 				$this->write_single_post($content);
 			}
 		}
@@ -93,7 +96,7 @@ class Markd {
 		$file = PUBLISHED_PATH . '/' . $file . '.html';
 		
 		$writeContent = Theme::locate_template('header');
-		$writeContent .= $content->html_content;
+		$writeContent .= Theme::locate_template('post-content', 'single', $content);
 		$writeContent .= Theme::locate_template('footer');
 		
 		$test = Filesystem::write_file($file, $writeContent, 'w');
