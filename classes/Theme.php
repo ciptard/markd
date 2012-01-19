@@ -27,4 +27,8 @@ class Theme {
 		
 		return $templateContents;
 	}
+	
+	public static function process_template($content) {
+		
+	}
 }
