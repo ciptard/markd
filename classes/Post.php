@@ -30,7 +30,13 @@ class Post {
 		foreach ($raw_headings as $raw_heading) {
 			if ($raw_heading != '') {
 				$temp = explode(':', $raw_heading);
-				if ($temp[0] == 'Date') { $temp[1] = strtotime($temp[1]); }
+				if ($temp[0] == 'Date') {
+					$temp[1] = trim($temp[1]);
+					$dateTime = explode(' ', $temp[1] . ':' . $temp[2]);
+					$date = explode('-', $dateTime[0]);
+					$time = explode(':', $dateTime[1]);
+					$temp[1] = mktime($time[0], $time[1], 0, $date[1], $date[2], $date[0]);
+				}
 				$heading[$temp[0]] = $temp[1];
 			}
 		}
