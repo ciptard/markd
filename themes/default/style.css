@@ -33,7 +33,7 @@ body {
 	font-size: 11px;
 }
 
-.well img {
+.well img, .single img {
 	max-width: 540px;
 }
 

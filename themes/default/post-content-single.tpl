@@ -1,4 +1,4 @@
-				<div class="post-wrap">
+				<div class="post-wrap single">
 					<h1 class="post-title">{{post_title}}</h1>
 					<div class="posted-date">Posted {{post_date}}</div>
 					<div class="post-content">{{post_content}}</div>
