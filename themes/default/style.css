@@ -33,6 +33,10 @@ body {
 	font-size: 11px;
 }
 
+.well img {
+	max-width: 540px;
+}
+
 .twtr-tweet-text .twtr-user, .twtr-ft {
 	display: none;
 }
