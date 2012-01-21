@@ -12,10 +12,8 @@ class Theme {
 				}
 				break;
 			case 'footer':
-				if ($context === '') {
-					$file = THEMES_PATH . ACTIVE_THEME . '/footer.tpl';
-					$templateContents = Filesystem::read_file($file);
-				}
+				$file = THEMES_PATH . ACTIVE_THEME . '/footer.tpl';
+				$templateContents = Filesystem::read_file($file);
 				break;
 			case 'post-content':
 				if ($context === 'single') {
@@ -71,6 +69,13 @@ class Theme {
 			if ($context == 'single') {
 				$replacements['{{page_previous}}'] = '<li></li>';
 				$replacements['{{page_next}}'] = '<li></li>';
+			}
+		}
+		
+		global $themeReplacements;
+		if (is_array($themeReplacements)) {
+			foreach ($themeReplacements as $themeReplacement=>$themeReplacementContent) {
+				$replacements[$themeReplacement] = $themeReplacementContent;
 			}
 		}
 

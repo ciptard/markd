@@ -101,7 +101,7 @@ class Markd {
 		$writeContent = Theme::locate_template('header');
 		$writeContent .= Theme::locate_template('post-content', 'single', $content);
 		$writeContent .= Theme::locate_template('footer', 'single');
-		
+
 		$test = Filesystem::write_file($file, $writeContent, 'w');
 		if ($test) { $this->filesWritten++; }
 	}
