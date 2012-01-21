@@ -9,7 +9,6 @@
 <meta property="og:description" content="{{site_desc}}" />
 <meta property="og:site_name" content="{{site_title}}" />
 
-<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
 <link rel="stylesheet" href="/style.css">
 <script type="text/javascript">
 
