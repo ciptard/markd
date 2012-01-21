@@ -2,6 +2,7 @@
 define('THEME_DATE_FORMAT', 'F jS, Y');														// Date format for string replacement in content
 
 $themeReplacements = array(
-	'{{twitter_username}}' => '',
-	'{{disqus_shortname}}' => ''
+	'{{twitter_username}}'    => '',
+	'{{disqus_shortname}}'    => '',
+	'{{google_analytics_id}}' => ''
 );
