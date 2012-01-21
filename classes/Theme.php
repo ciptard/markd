@@ -24,6 +24,10 @@ class Theme {
 					$templateContents = Filesystem::read_file($file, $content);
 				}
 				break;
+			case '404':
+				$file = THEMES_PATH . ACTIVE_THEME . '/404.tpl';
+				$templateContents = Filesystem::read_file($file, $content);
+				break;
 			case 'page-content':
 			default:
 				break;
@@ -66,7 +70,7 @@ class Theme {
 			} else {
 				$replacements['{{page_next}}'] = '<li></li>';
 			}
-			if ($context == 'single') {
+			if ($context == 'single' || $context == '404') {
 				$replacements['{{page_previous}}'] = '<li></li>';
 				$replacements['{{page_next}}'] = '<li></li>';
 			}

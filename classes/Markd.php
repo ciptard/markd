@@ -49,6 +49,13 @@ class Markd {
 					}
 				}
 				$feed->save();
+				
+				// Create 404 Page
+				$writeContent = Theme::locate_template('header');
+				$writeContent .= Theme::locate_template('404');;
+				$writeContent .= Theme::locate_template('footer', '404');
+				$file = PUBLISHED_PATH . '/404.html';
+				Filesystem::write_file($file, $writeContent, 'w');
 			}
 			
 			$this->currentPage++;
