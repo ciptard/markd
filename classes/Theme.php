@@ -31,16 +31,17 @@ class Theme {
 				break;
 		}
 		
-		$templateContents = self::process_template($templateContents, $content);
+		$templateContents = self::process_template($templateContents, $content, $templateName, $context);
 		
 		return $templateContents;
 	}
 	
-	public static function process_template($template, $content = '') {
+	public static function process_template($template, $content = '', $templateName = '', $context = '') {
 		$replacements = array(
-			'{{site_title}}' => SITE_TITLE,
-			'{{site_url}}'   => SITE_URL,
-			'{{site_desc}}'  => SITE_DESC
+			'{{site_title}}'   => SITE_TITLE,
+			'{{site_url}}'     => SITE_URL,
+			'{{site_desc}}'    => SITE_DESC,
+			'{{current_year}}' => date('Y')
 		);
 		
 		if (is_object($content)) {
@@ -49,8 +50,28 @@ class Theme {
 				$replacements['{{post_title}}'] = $content->title;
 				$replacements['{{post_permalink}}'] = Helpers::sanitize_slug($content->title) . '.html';
 			}
-			if ($content->date != '') { $replacements['{{post_date}}'] = $content->date; }
+			if ($content->date != '') { $replacements['{{post_date}}'] = date(THEME_DATE_FORMAT, $content->date); }
 			if ($content->html_content != '') { $replacements['{{post_content}}'] = $content->html_content; }
+		}
+
+		if ($templateName == 'footer') {
+			global $currently_processing;
+			if ($content === 0) {
+				$replacements['{{page_previous}}'] = '<li></li>';
+			} else if ($content === 1) {
+				$replacements['{{page_previous}}'] = '<li class="prev"><a href="/">Previous</a></li>';
+			} else {
+				$replacements['{{page_previous}}'] = '<li class="prev"><a href="/archive-' . ($content - 1) . '.html">Previous</a></li>';
+			}
+			if ($currently_processing) {
+				$replacements['{{page_next}}'] = '<li class="next"><a href="/archive-' . ($content + 1) . '.html">Next Page</a></li>';
+			} else {
+				$replacements['{{page_next}}'] = '<li></li>';
+			}
+			if ($context == 'single') {
+				$replacements['{{page_previous}}'] = '<li></li>';
+				$replacements['{{page_next}}'] = '<li></li>';
+			}
 		}
 
 		foreach ($replacements as $search=>$replace) {

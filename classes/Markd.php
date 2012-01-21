@@ -14,6 +14,7 @@ class Markd {
 		$this->currentPage = 0;
 
 		// Process blog posts
+		global $currently_processing;
 		$currently_processing = TRUE;
 
 		$lastPublished = 0;																	// See Posts Class for a reasonable explanation of $lastPublished
@@ -24,8 +25,8 @@ class Markd {
 			$lastPublished = $get_posts['lastPublished'];
 			$blogPosts = $get_posts['blogPosts'];
 
-			$this->write_post_list($this->currentPage, $blogPosts);
 			if (count($blogPosts) < POSTS_PER_PAGE) { $currently_processing = FALSE; }		// Keep loop going until we reach a full page of posts
+			$this->write_post_list($this->currentPage, $blogPosts);
 			
 			if ($this->currentPage == 0) {
 				// Create Feed Object and save
@@ -51,6 +52,9 @@ class Markd {
 			
 			$this->currentPage++;
 		}
+		
+		$styleSheet = Filesystem::read_file(THEMES_PATH . '/' . ACTIVE_THEME . '/style.css');
+		Filesystem::write_file(PUBLISHED_PATH . '/style.css', $styleSheet);
 		
 		$this->complete_process();
 	}
@@ -79,13 +83,12 @@ class Markd {
 		
 		if (!empty($contentList)) {
 			foreach($contentList as $content) {
-//				$writeContent .= $content->html_content;
 				$writeContent .= Theme::locate_template('post-content', $context, $content);
 				$this->write_single_post($content);
 			}
 		}
 
-		$writeContent .= Theme::locate_template('footer');
+		$writeContent .= Theme::locate_template('footer', '', $pageNumber);
 
 		$test = Filesystem::write_file($file, $writeContent, 'w');
 		if ($test) { $this->filesWritten++; }
@@ -97,7 +100,7 @@ class Markd {
 		
 		$writeContent = Theme::locate_template('header');
 		$writeContent .= Theme::locate_template('post-content', 'single', $content);
-		$writeContent .= Theme::locate_template('footer');
+		$writeContent .= Theme::locate_template('footer', 'single');
 		
 		$test = Filesystem::write_file($file, $writeContent, 'w');
 		if ($test) { $this->filesWritten++; }
