@@ -39,6 +39,7 @@ class Markd {
 					foreach ($blogPosts as $blogPost) {
 						unset($item);
 						$item = (object) array(
+							'id'           => $blogPost->id,
 							'title'        => $blogPost->title,
 							'link'         => SITE_URL . '/' . Helpers::sanitize_slug($blogPost->title) . '.html',
 							'pubDate'      => date('D, j M Y H:i:s +0000', $blogPost->date),

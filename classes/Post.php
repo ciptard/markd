@@ -35,7 +35,7 @@ class Post {
 			}
 		}
 
-		$this->id            = '';
+		$this->id            = md5($heading['Date']);
 		$this->title         = trim($heading['Title']);
 		$this->date          = trim($heading['Date']);
 		$this->published     = trim($heading['Published']);
