@@ -27,6 +27,9 @@
 				  }
 				}).render().setUser('{{twitter_username}}').start();
 				</script>
+				<div class="side-buttons">
+					<a class="btn primary" href="/feed">RSS</a>
+				</div>
 			</div> <!-- span4 -->
 		</div> <!-- row -->
 		<div class="row">

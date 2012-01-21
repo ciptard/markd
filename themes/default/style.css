@@ -28,6 +28,11 @@ body {
           box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
 
+.posted-date {
+	margin-bottom: 20px;
+	font-size: 11px;
+}
+
 .twtr-tweet-text .twtr-user, .twtr-ft {
 	display: none;
 }
@@ -45,6 +50,10 @@ body {
 	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 	border-image: initial;
+}
+
+.side-buttons {
+	margin: 10px 10px;
 }
 
 .container > footer p {
