@@ -4,5 +4,6 @@ define('THEME_DATE_FORMAT', 'F jS, Y');														// Date format for string r
 $themeReplacements = array(
 	'{{twitter_username}}'    => '',
 	'{{disqus_shortname}}'    => '',
-	'{{google_analytics_id}}' => ''
+	'{{google_analytics_id}}' => '',
+	'{{jotform_id}}'          => ''
 );
