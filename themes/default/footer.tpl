@@ -51,7 +51,6 @@
     </footer>
 
 </div> <!-- container -->
-
 <script src="http://www.jotform.com/min/g=feedback" type="text/javascript">
   new JotformFeedback({
      formId		: "{{jotform_id}}",
