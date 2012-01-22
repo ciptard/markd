@@ -43,7 +43,9 @@ class Theme {
 			'{{site_title}}'   => SITE_TITLE,
 			'{{site_url}}'     => SITE_URL,
 			'{{site_desc}}'    => SITE_DESC,
-			'{{current_year}}' => date('Y')
+			'{{current_year}}' => date('Y'),
+			'{{markd_header}}' => '<meta name="generator" content="markd" />',
+			'{{markd_footer}}' => ''
 		);
 		
 		if (is_object($content)) {

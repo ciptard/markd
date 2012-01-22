@@ -23,20 +23,7 @@
   })();
 
 </script>
-<script src="http://www.jotform.com/min/g=feedback" type="text/javascript">
-  new JotformFeedback({
-     formId		: "{{jotform_id}}",
-     buttonText	: "Contact Me",
-     base		: "http://www.jotform.com/",
-     background	: "#0064CD",
-     fontColor	: "#FFFFFF",
-     buttonSide	: "right",
-     buttonAlign	: "center",
-     type		: 2,
-     width		: 700,
-     height		: 500
-  });
-</script>
+{{markd_header}}
 </head>
 
 <body>
