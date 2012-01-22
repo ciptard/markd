@@ -18,8 +18,10 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  **/
 
+define('MARKD_VERSION', 'v.1.0.1');
+
 echo "
-markd Copyright (C) 2012  Matthew Walters
+markd " . MARKD_VERSION . " Copyright (C) 2012 Matthew Walters
 
 This program comes with ABSOLUTELY NO WARRANTY.
 This is free software, and you are welcome to redistribute it under certain conditions.

@@ -8,7 +8,6 @@ define('PUBLISHED_PATH', '/path/to/where/you/want/the/site/published');         
 define('THEMES_PATH', '/path/to/themes');                                           // Path to themes
 define('PLUGINS_PATH', '/path/to/plugins');                                         // Path to plugins
 define('POSTS_PER_PAGE', 10);                                                       // Number of posts per page for post listing pages
-define('POSTS_SORT_ORDER', 'DESC');                                                 // Sort posts in ASCending or DESCinding order?
 define('MARKD_DEBUG', FALSE);                                                       // Can be used to turn on debug notices during generation
                                                                                     
 define('SITE_TITLE', '');                                                           // Title for site

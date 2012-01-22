@@ -17,12 +17,10 @@ class Markd {
 		global $currently_processing;
 		$currently_processing = TRUE;
 
-		$lastPublished = 0;																	// See Posts Class for a reasonable explanation of $lastPublished
 		while ($currently_processing) {
 			$blogPosts = array();
-			$get_posts = $this->get_posts($lastPublished, POSTS_PER_PAGE);
+			$get_posts = $this->get_posts((POSTS_PER_PAGE * $this->currentPage), POSTS_PER_PAGE);
 
-			$lastPublished = $get_posts['lastPublished'];
 			$blogPosts = $get_posts['blogPosts'];
 
 			if (count($blogPosts) < POSTS_PER_PAGE) { $currently_processing = FALSE; }		// Keep loop going until we reach a full page of posts
