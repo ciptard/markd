@@ -55,8 +55,6 @@ class Theme {
 			'{{site_url}}'     => SITE_URL,
 			'{{site_desc}}'    => SITE_DESC,
 			'{{current_year}}' => date('Y'),
-			'{{markd_header}}' => '<meta name="generator" content="markd" />',
-			'{{markd_footer}}' => ''
 		);
 		
 		if (is_object($content)) {
@@ -102,6 +100,21 @@ class Theme {
 
 		foreach ($replacements as $search=>$replace) {
 			$template = str_replace($search, $replace, $template);
+		}
+
+		// Look for filters that need to be run
+		global $hooks;
+		if (strpos($template, '{{markd_header}}') !== false) {
+			$template = $hooks->execute_filters('markd_header', $template);
+			$template = str_replace('{{markd_header}}', '', $template);
+		}
+		if (strpos($template, '{{markd_sidebar}}') !== false) {
+			$template = $hooks->execute_filters('markd_sidebar', $template);
+			$template = str_replace('{{markd_sidebar}}', '', $template);
+		}
+		if (strpos($template, '{{markd_footer}}') !== false) {
+			$template = $hooks->execute_filters('markd_footer', $template);
+			$template = str_replace('{{markd_footer}}', '', $template);
 		}
 
 		return $template;

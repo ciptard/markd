@@ -211,3 +211,11 @@ class Markd {
 		echo "\n\n";
 	}
 }
+
+function markd_add_generator_header($headerContent) {
+	$generatorContent = "\n<meta name=\"generator\" content=\"markd\" />\n";
+	$headerContent = str_replace('{{markd_header}}', $generatorContent, $headerContent);
+	return $headerContent;
+}
+
+$hooks->add_filter('markd_header', 'markd_add_generator_header');

@@ -32,6 +32,8 @@ require_once('./config.php');
 require_once(THEMES_PATH . '/' . ACTIVE_THEME . '/config.php');
 require_once('./helpers.php');
 require_once('./libraries/markdown/markdown.php');
+require_once('./classes/Hooks.php');
+$hooks = new Hooks();
 require_once('./classes/Markd.php');
 require_once('./classes/Filesystem.php');
 require_once('./classes/Content.php');
@@ -41,5 +43,9 @@ require_once('./classes/Posts.php');
 require_once('./classes/Feed.php');
 require_once('./classes/Theme.php');
 $filesWritten = 0;
+
+// Active Plugins
+require_once('./plugins/twitter-widget/twitter-widget.php');
+
 
 $markd = new Markd();
