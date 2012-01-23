@@ -21,6 +21,11 @@ class Theme {
 					$templateContents = Filesystem::read_file($file);
 				} else {
 					$file = THEMES_PATH . ACTIVE_THEME . '/post-content.tpl';
+					
+					if (file_exists(THEMES_PATH . ACTIVE_THEME . '/archive.tpl') && $context == 'posting-archive') {
+						$file = THEMES_PATH . ACTIVE_THEME . '/archive.tpl';
+					}
+					
 					$templateContents = Filesystem::read_file($file);
 				}
 				break;
