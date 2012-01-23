@@ -4,6 +4,7 @@
 */
 class Filesystem {
 	public static function list_directory($dir) {
+		// list_directory() is taken from PlanetOzh.com (http://planetozh.com/blog/2005/12/php-non-recursive-function-through-directories/) and modified to suit the needs of this project
 		$file_list = '';
 		$stack[] = $dir;
 		while ($stack) {
