@@ -15,33 +15,6 @@ At least for the time being, there is no dynamic processing.  This means comment
 
 ---
 
-# Questions?
-**Q: Doesn't something like this already exist?**
-
-A: Yep.  I've seen other PHP projects that do this, as well as Ruby projects.
-
-**Q: Doesn't it bother you that you're creating something that already exists?**
-
-A: Not really
-
-**Q: So why did you build it?**
-
-A: I really just wanted a system that worked the way *I* wanted it to.  It was also a bit of an exercise for me from an engineering perspective to sharpen a few skills I feel I'd gotten stale on.
-
-**Q: Oh**
-
-A: That's not a question.
-
-**Q: I'm not a developer. Should I use this?**
-
-A: Possibly not.  It requires using PHP-CLI.  That will need to be installed on the computer you generate your site from, and you'll need to put the path to PHP in one of the files.  PHP command line scripts aren't usually the best fit for non-developers.
-
-**Q: I am a developer, should I use this?**
-
-A: If you like the features, then sure.  Please contribute as well.  If you want it to do something vastly different then you might want to fork it or make your own.
-
----
-
 # License & Copyright
 **markd Copyright (C) 2012  Matthew Walters**
 
