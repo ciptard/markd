@@ -1,4 +1,4 @@
-#!/usr/bin/php -dmemory_limit=512M -dsafe_mode=Off
+#!/usr/bin/php
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
 /**
