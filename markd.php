@@ -34,6 +34,8 @@ require_once('./helpers.php');
 require_once('./libraries/markdown/markdown.php');
 require_once('./classes/Markd.php');
 require_once('./classes/Filesystem.php');
+require_once('./classes/Content.php');
+require_once('./classes/Page.php');
 require_once('./classes/Post.php');
 require_once('./classes/Posts.php');
 require_once('./classes/Feed.php');

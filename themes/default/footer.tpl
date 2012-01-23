@@ -52,6 +52,8 @@
 
 </div> <!-- container -->
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
 <script src="http://www.jotform.com/min/g=feedback" type="text/javascript">
   new JotformFeedback({
      formId		: "{{jotform_id}}",
@@ -66,5 +68,9 @@
      height		: 500
   });
 </script>
+
+
+<script src="/common.js" type="text/javascript"></script>
+
 </body>
 </html>

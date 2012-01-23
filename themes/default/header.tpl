@@ -32,11 +32,16 @@
 	<div class="fill">
 		<div class="container">
 			<a class="brand" href="/">{{site_title}}</a>
-			<!--
 			<ul class="nav">
-				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/">Home</a></li>
+				<li class="dropdown" data-dropdown="dropdown">
+					<a class="dropdown-toggle" href="#">Projects</a>
+					<ul class="dropdown-menu">
+						<li><a href="/Markd.html">Markd</a></li>
+					</ul>
+				</li>
+				<li><a href="/Search.html">Search</a></li>
 			</ul>
-			-->
 		</div>
 	</div>
 </div>

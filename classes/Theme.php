@@ -18,17 +18,23 @@ class Theme {
 			case 'post-content':
 				if ($context === 'single') {
 					$file = THEMES_PATH . ACTIVE_THEME . '/post-content-single.tpl';
-					$templateContents = Filesystem::read_file($file, $content);
+					$templateContents = Filesystem::read_file($file);
 				} else {
 					$file = THEMES_PATH . ACTIVE_THEME . '/post-content.tpl';
-					$templateContents = Filesystem::read_file($file, $content);
+					$templateContents = Filesystem::read_file($file);
 				}
 				break;
 			case '404':
 				$file = THEMES_PATH . ACTIVE_THEME . '/404.tpl';
-				$templateContents = Filesystem::read_file($file, $content);
+				$templateContents = Filesystem::read_file($file);
 				break;
-			case 'page-content':
+			case 'page':
+				$file = THEMES_PATH . ACTIVE_THEME . '/page.tpl';
+				if (strpos($content->content_file, '404.md') !== false) {
+					$file = THEMES_PATH . ACTIVE_THEME . '/404.tpl';
+				}				
+				$templateContents = Filesystem::read_file($file);
+				break;			
 			default:
 				break;
 		}
