@@ -356,7 +356,7 @@ button.btn::-moz-focus-inner,input[type=submit].btn::-moz-focus-inner{padding:0;
 .media-grid a:hover{border-color:#0069d6;-webkit-box-shadow:0 1px 4px rgba(0, 105, 214, 0.25);-moz-box-shadow:0 1px 4px rgba(0, 105, 214, 0.25);box-shadow:0 1px 4px rgba(0, 105, 214, 0.25);}
 
 html, body {
-	background-color: #eee;
+	background-image: url(https://si0.twimg.com/images/themes/theme14/bg.gif);
 }
 
 body {
@@ -419,4 +419,8 @@ body {
 
 .container > footer p {
 	text-align: center;
+}
+
+footer {
+	border-top: none;
 }
