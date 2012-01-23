@@ -1,5 +1,6 @@
 #!/usr/bin/php -dmemory_limit=512M -dsafe_mode=Off
 <?php
+error_reporting(E_ALL ^ E_NOTICE);
 /**
  *   Developer: Matt Walters
  *   Copyright (C) 2012 Matthew Walters
