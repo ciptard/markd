@@ -40,5 +40,6 @@ require_once('./classes/Post.php');
 require_once('./classes/Posts.php');
 require_once('./classes/Feed.php');
 require_once('./classes/Theme.php');
+$filesWritten = 0;
 
 $msw = new Markd();

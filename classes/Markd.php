@@ -5,12 +5,10 @@
 */
 class Markd {
 	public $publishedPosts;
-	public $filesWritten;
 	private $currentPage;
 	
 	function __construct() {
 		$this->publishedPosts = 0;
-		$this->filesWritten = 0;
 		$this->currentPage = 0;
 
 		$this->process_blog_posts();
@@ -129,8 +127,7 @@ class Markd {
 
 		$writeContent .= Theme::locate_template('footer', '', $pageNumber);
 
-		$test = Filesystem::write_file($file, $writeContent, 'w');
-		if ($test) { $this->filesWritten++; }
+		Filesystem::write_file($file, $writeContent, 'w');
 	}
 	
 	public function write_single_post($content) {
@@ -141,8 +138,7 @@ class Markd {
 		$writeContent .= Theme::locate_template('post-content', 'single', $content);
 		$writeContent .= Theme::locate_template('footer', 'single');
 
-		$test = Filesystem::write_file($file, $writeContent, 'w');
-		if ($test) { $this->filesWritten++; }
+		Filesystem::write_file($file, $writeContent, 'w');
 	}
 	
 	public function write_page($page) {
@@ -157,13 +153,14 @@ class Markd {
 		$writeContent .= Theme::locate_template('page', '', $page);
 		$writeContent .= Theme::locate_template('footer', 'single');
 
-		$test = Filesystem::write_file($file, $writeContent, 'w');
-		if ($test) { $this->filesWritten++; }
+		Filesystem::write_file($file, $writeContent, 'w');
 	}
 	
 	private function complete_process() {
+		global $filesWritten;
+		
 		echo "\n\nProcessed " . $this->publishedPosts . " posts.";
-		echo "\nWrote " . $this->filesWritten . " files.";
+		echo "\nWrote " . $filesWritten . " files.";
 		echo "\n\n";
 	}
 }

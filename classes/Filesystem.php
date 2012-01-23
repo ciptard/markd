@@ -27,6 +27,9 @@ class Filesystem {
 	public static function write_file($file = '', $content = '', $mode = 'w') {
 		if ($file == '') { return FALSE; }
 
+		global $filesWritten;
+		$filesWritten++;
+
 		$fp = fopen($file, $mode);
 		fwrite($fp, $content);
 		fclose($fp);
