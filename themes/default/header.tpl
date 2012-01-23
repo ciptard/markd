@@ -33,7 +33,6 @@
 		<div class="container">
 			<a class="brand" href="/">{{site_title}}</a>
 			<ul class="nav">
-				<li><a href="/">Home</a></li>
 				<li class="dropdown" data-dropdown="dropdown">
 					<a class="dropdown-toggle" href="#">Projects</a>
 					<ul class="dropdown-menu">
