@@ -24,15 +24,15 @@ class Theme {
 					$templateContents = Filesystem::read_file($file);
 				}
 				break;
-			case '404':
-				$file = THEMES_PATH . ACTIVE_THEME . '/404.tpl';
-				$templateContents = Filesystem::read_file($file);
-				break;
 			case 'page':
 				$file = THEMES_PATH . ACTIVE_THEME . '/page.tpl';
-				if (strpos($content->content_file, '404.md') !== false) {
-					$file = THEMES_PATH . ACTIVE_THEME . '/404.tpl';
-				}				
+				$pageFile = (basename($content->content_file));
+				$pageFile = substr($pageFile, 0, strpos($pageFile, '.'));
+
+				if (file_exists(THEMES_PATH . ACTIVE_THEME . '/' . $pageFile . '.tpl')) {
+					$file = THEMES_PATH . ACTIVE_THEME . '/' . $pageFile . '.tpl';
+				}
+
 				$templateContents = Filesystem::read_file($file);
 				break;			
 			default:
