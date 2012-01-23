@@ -5,11 +5,14 @@
 */
 class Markd {
 	public $publishedPosts;
+	public $renderedNavigation;
 	private $currentPage;
 	
 	function __construct() {
 		$this->publishedPosts = 0;
 		$this->currentPage = 0;
+
+		$this->renderedNavigation = $this->get_page_menu();
 
 		$this->process_blog_posts();
 		$this->process_pages();
@@ -17,6 +20,50 @@ class Markd {
 		$this->process_javascript();
 		
 		$this->complete_process();
+	}
+	
+	public function get_page_menu() {
+		$pages = Filesystem::directory_to_array(PAGES_PATH);
+
+		foreach ($pages as $k=>$navItem) {
+			if (is_array($navItem)) {
+				foreach ($navItem as $m=>$n) {
+					if (is_array($n)) {
+						die("\n\n==============================[ERROR]====================================\nDrop downs for page structure can only support 2 levels.  Publish failed.\n=========================================================================\n\n");
+					}
+					$page = new Page(PAGES_PATH . '/' . $k . '/' . $n);
+					if ($page->published == 'true') {
+						$nav[$k][$n]['published_file'] = Helpers::sanitize_slug($page->title) . '.html';
+						$nav[$k][$n]['name'] = $page->title;
+					}
+				}
+			} else {
+				$page = new Page(PAGES_PATH . '/' . $navItem);
+				if ($page->published == 'true' && strpos($page->content_file, '404.md') === false) {
+					$nav[$navItem]['published_file'] = Helpers::sanitize_slug($page->title) . '.html';
+					$nav[$navItem]['name'] = $page->title;
+				}
+			}
+		}
+
+		$renderedNav = '<ul class="nav">' . "\n";
+		foreach ($nav as $k=>$v) {
+			if (!isset($v['published_file'])) {
+				$renderedNav .= '	<li class="dropdown" data-dropdown="dropdown">' . "\n";
+				$renderedNav .= '		<a class="dropdown-toggle" href="#">' . $k . '</a>' . "\n";
+				$renderedNav .= '		<ul class="dropdown-menu">' . "\n";
+				foreach ($v as $m=>$n) {
+					$renderedNav .= '			<li><a href="' . $n['published_file'] . '">' . $n['name'] . '</a></li>' . "\n";
+				}
+				$renderedNav .= '		</ul>' . "\n";
+				$renderedNav .= '	</li>' . "\n";
+			} else {
+				$renderedNav .= '	<li><a href="' . $v['published_file'] . '">' . $v['name'] . '</a></li>' . "\n";
+			}
+		}
+		$renderedNav .= '</ul>' . "\n";
+
+		return $renderedNav;
 	}
 	
 	public function process_blog_posts() {
@@ -116,7 +163,7 @@ class Markd {
 			$context = 'posting-archive';
 		}
 		
-		$writeContent = Theme::locate_template('header');
+		$writeContent = Theme::locate_template('header', '', $this->renderedNavigation);
 		
 		if (!empty($contentList)) {
 			foreach($contentList as $content) {
@@ -134,7 +181,7 @@ class Markd {
 		$file = Helpers::sanitize_slug($content->title);
 		$file = PUBLISHED_PATH . '/' . $file . '.html';
 		
-		$writeContent = Theme::locate_template('header');
+		$writeContent = Theme::locate_template('header', '', $this->renderedNavigation);
 		$writeContent .= Theme::locate_template('post-content', 'single', $content);
 		$writeContent .= Theme::locate_template('footer', 'single');
 
@@ -149,7 +196,7 @@ class Markd {
 			$file = PUBLISHED_PATH . '/404.html';
 		}
 		
-		$writeContent = Theme::locate_template('header');
+		$writeContent = Theme::locate_template('header', '', $this->renderedNavigation);
 		$writeContent .= Theme::locate_template('page', '', $page);
 		$writeContent .= Theme::locate_template('footer', 'single');
 

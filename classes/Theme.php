@@ -69,6 +69,10 @@ class Theme {
 			if ($content->html_content != '') { $replacements['{{post_content}}'] = $content->html_content; }
 		}
 
+		if ($templateName == 'header') {
+			$replacements['{{site_navigation}}'] = $content;
+		}
+
 		if ($templateName == 'footer') {
 			global $currently_processing;
 			if ($content === 0) {

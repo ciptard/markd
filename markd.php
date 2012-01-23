@@ -42,4 +42,4 @@ require_once('./classes/Feed.php');
 require_once('./classes/Theme.php');
 $filesWritten = 0;
 
-$msw = new Markd();
+$markd = new Markd();
