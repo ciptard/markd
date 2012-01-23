@@ -37,7 +37,7 @@
 				<li class="dropdown" data-dropdown="dropdown">
 					<a class="dropdown-toggle" href="#">Projects</a>
 					<ul class="dropdown-menu">
-						<li><a href="/Markd.html">Markd</a></li>
+						<li><a href="/markd.html">Markd</a></li>
 					</ul>
 				</li>
 				<li><a href="/Search.html">Search</a></li>
