@@ -1,6 +1,7 @@
 <div class="post-wrap well">
 	<h2 class="post-title"><a href="{{post_permalink}}">{{post_title}}</a></h2>
 	<div class="posted-date">Posted {{post_date}}</div>
+	<div class="post-cats">Posted in {{category_list}}</div>
 	<div class="post-content">{{post_content}}</div>
 	<script type="text/javascript">
 	    var disqus_shortname = '{{disqus_shortname}}';

@@ -51,10 +51,10 @@ class Theme {
 	
 	public static function process_template($template, $content = '', $templateName = '', $context = '') {
 		$replacements = array(
-			'{{site_title}}'   => SITE_TITLE,
-			'{{site_url}}'     => SITE_URL,
-			'{{site_desc}}'    => SITE_DESC,
-			'{{current_year}}' => date('Y'),
+			'{{site_title}}'     => SITE_TITLE,
+			'{{site_url}}'       => SITE_URL,
+			'{{site_desc}}'      => SITE_DESC,
+			'{{current_year}}'   => date('Y')
 		);
 		
 		if (is_object($content)) {
@@ -65,6 +65,7 @@ class Theme {
 			}
 			if ($content->date != '') { $replacements['{{post_date}}'] = date(THEME_DATE_FORMAT, $content->date); }
 			if ($content->html_content != '') { $replacements['{{post_content}}'] = $content->html_content; }
+			if (is_array($content->categories)) { $replacements['{{category_list}}'] = implode(', ', $content->categories); }
 		}
 
 		if ($templateName == 'header') {
