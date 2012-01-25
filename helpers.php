@@ -16,7 +16,9 @@ function _debug($data, $withHtml = FALSE) {
 		print_r($data);
 		if ($withHtml) { echo '</pre>'; }
 	} elseif (is_string($data)) {
+		if (!$withHtml) { echo "\n"; } else { echo "<br/>"; }
 		echo $data;
+		if (!$withHtml) { echo "\n"; } else { echo "<br/>"; }
 	}
 	if ($withHtml) { echo '</div>'; }
 	if (!$withHtml) { echo "\n\n"; }
